@@ -31,13 +31,10 @@ jobs:
           cd frontend
           npm install --legacy-peer-deps
 
-      - name: Ensure Public Index HTML
+      - name: Ensure Public Folder and Index HTML
         run: |
-          cd frontend
-          mkdir -p public
-          if [ ! -f public/index.html ]; then
-            echo '<!DOCTYPE html><html><head><title>Canwe POS</title></head><body><h1>Canwe POS App</h1></body></html>' > public/index.html
-          fi
+          mkdir -p frontend/public
+          echo '<!DOCTYPE html><html><head><meta charset="utf-8"><title>Canwe POS</title></head><body><div id="root"><h1>Canwe POS App</h1></div></body></html>' > frontend/public/index.html
 
       - name: Sync Capacitor Android
         run: |
