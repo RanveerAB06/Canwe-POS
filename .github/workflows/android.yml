@@ -31,10 +31,12 @@ jobs:
           cd frontend
           npm install --legacy-peer-deps
 
-      - name: Ensure Public Folder and Index HTML
+      - name: Prepare Web Assets Directory
         run: |
-          mkdir -p frontend/public
-          echo '<!DOCTYPE html><html><head><meta charset="utf-8"><title>Canwe POS</title></head><body><div id="root"><h1>Canwe POS App</h1></div></body></html>' > frontend/public/index.html
+          cd frontend
+          mkdir -p public out
+          echo '<!DOCTYPE html><html><head><meta charset="utf-8"><title>Canwe POS</title></head><body><div id="root"><h1>Canwe POS App</h1></div></body></html>' > public/index.html
+          echo '<!DOCTYPE html><html><head><meta charset="utf-8"><title>Canwe POS</title></head><body><div id="root"><h1>Canwe POS App</h1></div></body></html>' > out/index.html
 
       - name: Sync Capacitor Android
         run: |
@@ -55,3 +57,4 @@ jobs:
         with:
           name: Canwe-POS-Android-APK
           path: frontend/android/app/build/outputs/apk/debug/app-debug.apk
+
